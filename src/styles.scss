@@ -1,4 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url("../src/assets/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: url("../src/assets/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu-Light";
+  src: url("../src/assets/Ubuntu-Light.ttf");
+}
+
+@import "@angular/material/theming";
+
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url("assets/Ubuntu-Regular.ttf");
+}
+$custom-typography: mat.define-typography-config(
+  $font-family: "Ubuntu-Regular",
+);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Ubuntu-Regular";
+  background-color: rgb(207 207 207 / 14%);
+  padding-left: 30px;
+  padding-right: 30px;
+}

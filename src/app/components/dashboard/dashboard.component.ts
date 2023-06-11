@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User.model';
 import { AppState } from 'src/app/models/app.state.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
-import { UpdateUserAction } from 'src/app/store/actions/users.action';
+import { UpdateCityFilters, UpdateCompanyNameFilter, UpdateUserAction } from 'src/app/store/actions/users.action';
+import { DataState } from 'src/app/store/reducers/users.reducer';
+import { Filters } from '../utils/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,20 +17,49 @@ import { UpdateUserAction } from 'src/app/store/actions/users.action';
 })
 export class DashboardComponent {
 
-  users$: Observable<Array<User>> | undefined;
+  registry$: Observable<DataState>| undefined;
 
-  constructor(private readonly dashboardService: DashboardService, private store: Store<AppState>) { }
+  displayedColumns: string[] = ['id', 'name', 'username', 'email'];
+  dataSource!: MatTableDataSource<any>
+
+  constructor(private readonly dashboardService: DashboardService, private store: Store<AppState>) {
+    this.registry$ = this.store.select('dataState')
+  }
 
   ngOnInit() {
-    this.users$ = this.store.select("users");
+    this.registry$?.subscribe((data: DataState) => this.dataSource = new MatTableDataSource(data.users))
     this.loadUsers()
   }
 
-  loadUsers() {
+  loadUsers(): void {
     this.dashboardService.loadUsers()
       .subscribe((data: User[]) => {
-        this.store.dispatch(new UpdateUserAction(data) )
+        this.store.dispatch(new UpdateUserAction(data)
+        )
+        this.setCompanyFilter(data);
+        this.setCityFilter(data)
       })
   };
+
+  setCompanyFilter = (data: User[]): void => {
+    let companies: string[] = []
+    data.map(item => companies.push(item.company.name))
+    this.store.dispatch(new UpdateCompanyNameFilter(new Set(companies))
+    )
+  }
+
+  setCityFilter = (data: User[]): void => {
+    let cities: string[] = []
+    data.map(item => cities.push(item.address.city))
+    this.store.dispatch(new UpdateCityFilters(new Set(cities))
+    )
+  }
+
+  applyFilters = (filters: Filters) => {
+    console.log("filters ", filters)
+    console.log(this.dataSource.data)
+  }
+
+
 }
 

@@ -1,1 +1,16 @@
 config.json
+
+# dependencies
+/node_modules
+node_modules/
+#build
+.angular
+/dist
+
+package-lock.json
+
+# testing
+/coverage
+
+# production
+/build

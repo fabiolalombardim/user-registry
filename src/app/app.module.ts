@@ -11,20 +11,44 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './services/config.service';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { reducer } from './store/reducers/users.reducer';
+import { MatTableModule } from '@angular/material/table'
+import { SearchbarComponent } from './components/utils/searchbar/searchbar.component'
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { ToolbarComponent } from './components/utils/toolbar/toolbar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './components/utils/header/header.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SearchbarComponent,
+    ToolbarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatGridListModule,
     HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSelectModule,
+    MatInputModule,
+    FlexLayoutModule,
     StoreModule.forRoot({
-      users: reducer 
-    } as ActionReducerMap<any,any>),
+      dataState: reducer
+    } as ActionReducerMap<any, any>),
     BrowserAnimationsModule
   ],
   providers: [DashboardService,

@@ -1,0 +1,54 @@
+<div class="toolbar" fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutWrap fxFlex="40%" fxLayoutGap="10px">
+    <div fxFlex="40%">
+      <span class="toolbar__header">What are you looking for?</span>
+    </div>
+    <div fxFlex="40%">
+      <app-searchbar></app-searchbar>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutWrap fxFlex="25%" fxLayoutGap="10px">
+    <div fxFlex="25%">
+      <span class="toolbar__header">City</span>
+    </div>
+    <div fxFlex="25%">
+      <mat-form-field [style.width.%]="100">
+        <mat-label>All</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let city of citiesFilters"
+            [value]="city"
+            (click)="updateFilterParams(0, city)"
+          >
+            {{ city }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutWrap fxFlex="25%" fxLayoutGap="10px">
+    <div fxFlex="25%">
+      <span class="toolbar__header">Company</span>
+    </div>
+    <div fxFlex="25%">
+      <mat-form-field [style.width.%]="100">
+        <mat-label>All</mat-label>
+        <mat-select>
+          <mat-option
+            (click)="updateFilterParams(1, category)"
+            *ngFor="let category of companyFilters"
+            [value]="category"
+          >
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxFlex="10%" fxLayoutAlign="flex-end center">
+    <button mat-raised-button color="primary" (click)="submitFilters()">
+      SEARCH
+    </button>
+  </div>
+</div>

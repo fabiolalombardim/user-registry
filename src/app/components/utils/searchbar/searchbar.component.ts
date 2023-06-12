@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-searchbar',
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./searchbar.component.scss']
 })
 export class SearchbarComponent {
-  search: string ="";
+  search: string = "";
 
 }

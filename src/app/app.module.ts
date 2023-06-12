@@ -23,6 +23,7 @@ import { ToolbarComponent } from './components/utils/toolbar/toolbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './components/utils/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatTableModule,
     MatSelectModule,
+    MatChipsModule,
     MatInputModule,
     FlexLayoutModule,
     StoreModule.forRoot({

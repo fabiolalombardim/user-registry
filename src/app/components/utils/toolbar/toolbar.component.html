@@ -4,7 +4,31 @@
       <span class="toolbar__header">What are you looking for?</span>
     </div>
     <div fxFlex="40%">
-      <app-searchbar></app-searchbar>
+      <app-searchbar #searchbar></app-searchbar>
+    </div>
+    <div fxFlex="100%">
+      <mat-chip-row
+        class="toolbar__chip-row toolbar__badge-spacing"
+        *ngIf="filters.cityFilter !== ''"
+        [editable]="false"
+        (removed)="remove(0)"
+      >
+        {{ filters.cityFilter }}
+        <button matChipRemove [attr.aria-label]="'remove'">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <mat-chip-row
+        class="toolbar__chip-row toolbar__badge-spacing"
+        *ngIf="filters.companyFilter !== ''"
+        [editable]="false"
+        (removed)="remove(1)"
+      >
+        {{ filters.companyFilter }}
+        <button matChipRemove [attr.aria-label]="'remove'">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
     </div>
   </div>
   <div fxLayout="column" fxLayoutWrap fxFlex="25%" fxLayoutGap="10px">
@@ -14,7 +38,7 @@
     <div fxFlex="25%">
       <mat-form-field [style.width.%]="100">
         <mat-label>All</mat-label>
-        <mat-select>
+        <mat-select #matRefCity>
           <mat-option
             *ngFor="let city of citiesFilters"
             [value]="city"
@@ -25,6 +49,9 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div fxFlex="100%" class="">
+      <div *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''" class="toolbar__spacing"></div>
+    </div>
   </div>
 
   <div fxLayout="column" fxLayoutWrap fxFlex="25%" fxLayoutGap="10px">
@@ -34,7 +61,7 @@
     <div fxFlex="25%">
       <mat-form-field [style.width.%]="100">
         <mat-label>All</mat-label>
-        <mat-select>
+        <mat-select #matRefCompany>
           <mat-option
             (click)="updateFilterParams(1, category)"
             *ngFor="let category of companyFilters"
@@ -44,6 +71,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
+    <div fxFlex="100%" class="">
+      <div *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''" class="toolbar__spacing"></div>
     </div>
   </div>
   <div fxFlex="10%" fxLayoutAlign="flex-end center">

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div>
+<div ngClass.gt-md="text-lg">
   <app-toolbar (sendFilters)="applyFilters($event)"></app-toolbar>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

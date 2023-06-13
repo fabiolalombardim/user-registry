@@ -18,8 +18,8 @@ export interface Filters {
 })
 export class ToolbarComponent implements OnInit {
 
-  citiesFilters: any
-  companyFilters: any
+  citiesFilters!: Array<string>
+  companyFilters!: Array<string>
   filters: Filters = {
     cityFilter: "",
     companyFilter: "",

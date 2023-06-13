@@ -18,7 +18,7 @@ export class DialogHandlerComponent {
 
   openDialog = (): void => {
     this.dialog.open(UserDetailsComponent, {
-      width: '80vw',
+      width: '90vw',
       height: 'fit-content', 
       data: {user: this.userData, isNew: this.isNew
       }

@@ -13,8 +13,8 @@ export class DashboardService {
 
   apiURL = this.config.apiEndpoint
 
-    // Read
-    loadUsers() {
-      return this.http.get<User[]>(`${this.apiURL}`);
-    }
+  // Read
+  loadUsers() {
+    return this.http.get<User[]>(`${this.apiURL}`);
+  }
 }

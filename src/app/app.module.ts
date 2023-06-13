@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardService } from './services/dashboard.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './services/config.service';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { reducer } from './store/reducers/users.reducer';
@@ -32,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from './services/snackbar.service';
 import { UserDeleteComponent } from './components/user-delete/user-delete.component';
+import { ErrorInterceptorService } from './services/interceptor.service';
+import { ConfigErrorComponent } from './components/config-error/config-error.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { UserDeleteComponent } from './components/user-delete/user-delete.compon
     HeaderComponent,
     UserDetailsComponent,
     DialogHandlerComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    ConfigErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -68,18 +71,22 @@ import { UserDeleteComponent } from './components/user-delete/user-delete.compon
     } as ActionReducerMap<any, any>),
     BrowserAnimationsModule
   ],
-  providers: [DashboardService,
+  providers: [
+    DashboardService,
     SnackbarService,
     {
       provide: APP_INITIALIZER,
       useFactory: loadConfig,
       multi: true,
       deps: [ConfigService]
-    }],
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
+// Used to load the config.json file before the rest of the app loads.
 export function loadConfig(appConfigService: ConfigService) {
   return () => {
     return appConfigService.load()

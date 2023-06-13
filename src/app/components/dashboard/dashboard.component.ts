@@ -10,6 +10,7 @@ import { UpdateCityFilters, UpdateCompanyNameFilter, UpdateUserAction } from 'sr
 import { DataState } from 'src/app/store/reducers/users.reducer';
 import { Filters } from '../utils/toolbar/toolbar.component';
 
+// Base component where the set of components that make up the app are displayed
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +18,7 @@ import { Filters } from '../utils/toolbar/toolbar.component';
 })
 export class DashboardComponent {
 
+  // Observable used to have the data of the NgRx store up to data. 
   registry$: Observable<DataState> | undefined;
 
   displayedColumns: string[] = ['id', 'name', 'username', 'email', 'update', 'delete'];
@@ -28,6 +30,9 @@ export class DashboardComponent {
     this.registry$ = this.store.select('dataState')
   }
 
+  // For this demo, every time the page gets loaded/refreshed it will call the API and the list
+  // of users will always be the same. In case there was a modification of the data before hitting the refresh button,
+  // it will get lost. So for testing out the app correctly, we most be aware of this information
   ngOnInit(): void {
     this.registry$?.subscribe((data: DataState) => {
       this.dataSource = new MatTableDataSource(data.users)
@@ -36,6 +41,8 @@ export class DashboardComponent {
     this.loadUsers()
   }
 
+  // Method that implements the loadUsers() method from the Dashboard service to recover the list of users.
+  // Then, updates de storage with the received data.
   loadUsers(): void {
     this.dashboardService.loadUsers()
       .subscribe((data: User[]) => {
@@ -46,6 +53,8 @@ export class DashboardComponent {
       })
   };
 
+  // Method that filters the list of users and saves in the storage each user company name as a list of strings,
+  // so that it can fill the company name dropdown
   setCompanyFilter = (data: User[]): void => {
     let companies: string[] = []
     data.map(item => companies.push(item.company.name))
@@ -53,6 +62,8 @@ export class DashboardComponent {
     )
   }
 
+  // Method that filters the list of users and saves in the storage each user city as a list of strings,
+  // so that it can fill the city dropdown
   setCityFilter = (data: User[]): void => {
     let cities: string[] = []
     data.map(item => cities.push(item.address.city))
@@ -60,6 +71,7 @@ export class DashboardComponent {
     )
   }
 
+  // Method that sorts the list of users in accordance with the filters received when the user clicks the "Search" button
   applyFilters = (filters: Filters): void => {
     const copyData = this.dataSourceImmutable.data.slice()
 
@@ -77,6 +89,8 @@ export class DashboardComponent {
     }
   }
 
+  // This field filters the list of users and checks if there is a coincidence between the string received
+  // from the searchbar and the value of any field of the User model
   filterByAnyField = (data: User[], searchText: string): User[] => {
     return data.filter(item => (
       item.name.toLowerCase().includes(searchText.toLowerCase()) ||

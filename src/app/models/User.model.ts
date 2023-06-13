@@ -1,3 +1,4 @@
+// Interface expected from the API response
 export interface User {
     id: string;
     name: string;

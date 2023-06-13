@@ -1,4 +1,15 @@
-<button *ngIf="!isNew && !isDelete" matSuffix mat-button (click)="openDialog()" ><mat-icon>visibility</mat-icon></button>
-<button mat-raised-button color="primary" *ngIf="isNew && !isDelete" (click)="openDialog()">CREATE NEW</button>
+<button *ngIf="!isNew && !isDelete" matSuffix mat-button (click)="openDialog()">
+  <mat-icon>visibility</mat-icon>
+</button>
+<button
+  mat-raised-button
+  color="primary"
+  *ngIf="isNew && !isDelete"
+  (click)="openDialog()"
+>
+  CREATE NEW
+</button>
 
-<button matSuffix mat-button *ngIf="isDelete" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon></button>
+<button matSuffix mat-button *ngIf="isDelete" (click)="openDeleteDialog()">
+  <mat-icon>delete</mat-icon>
+</button>

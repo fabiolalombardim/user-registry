@@ -50,7 +50,10 @@
       </mat-form-field>
     </div>
     <div fxFlex="100%" class="">
-      <div *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''" class="toolbar__spacing"></div>
+      <div
+        *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''"
+        class="toolbar__spacing"
+      ></div>
     </div>
   </div>
 
@@ -59,10 +62,11 @@
       <span class="toolbar__header">Company</span>
     </div>
     <div fxFlex="25%">
-      <mat-form-field [style.width.%]="100">
+      <mat-form-field [style.width.%]="100" class="toolbar__test-button">
         <mat-label>All</mat-label>
         <mat-select #matRefCompany>
           <mat-option
+            #dropdown
             (click)="updateFilterParams(1, category)"
             *ngFor="let category of companyFilters"
             [value]="category"
@@ -73,7 +77,10 @@
       </mat-form-field>
     </div>
     <div fxFlex="100%" class="">
-      <div *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''" class="toolbar__spacing"></div>
+      <div
+        *ngIf="filters.cityFilter !== '' || filters.companyFilter !== ''"
+        class="toolbar__spacing"
+      ></div>
     </div>
   </div>
   <div fxFlex="10%" fxLayoutAlign="flex-end center">

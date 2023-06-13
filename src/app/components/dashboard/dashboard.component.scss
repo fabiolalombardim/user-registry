@@ -1,27 +1,26 @@
 .mat-mdc-row .mat-mdc-cell {
-    cursor: pointer;
-  }
-  
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: #fff
-  }
+  cursor: pointer;
+}
 
-  .mat-mdc-row:hover {
-    box-shadow:   7px -5px 12px -6px rgba(0,0,0,0.75);
-    background-color: rgb(103 58 183 / 11%) !important;
-  }
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: #fff;
+}
 
-  .table {
-    &__hide {
-        visibility: hidden;
-    }
-  }
+.mat-mdc-row:hover {
+  box-shadow: 7px -5px 12px -6px rgba(0, 0, 0, 0.75);
+  background-color: rgb(103 58 183 / 11%) !important;
+}
 
-  .mat-column-update {
-    width: 100px;
+.table {
+  &__hide {
+    visibility: hidden;
   }
+}
 
-  .mat-column-delete {
-    width: 100px;
-  }
+.mat-column-update {
+  width: 100px;
+}
 
+.mat-column-delete {
+  width: 100px;
+}

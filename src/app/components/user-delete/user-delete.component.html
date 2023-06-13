@@ -12,20 +12,18 @@
     >
   </div>
 
-  <div fxLayout="row" fxLayoutWrap fxFlex="100" fxLayoutAlign="center center" fxLayoutGap="18px">
-    <button
-      mat-raised-button
-      color="warn"
-      (click)="closeDialog()"
-    >
+  <div
+    fxLayout="row"
+    fxLayoutWrap
+    fxFlex="100"
+    fxLayoutAlign="center center"
+    fxLayoutGap="18px"
+  >
+    <button mat-raised-button color="warn" (click)="closeDialog()">
       CANCEL
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="deleteUser()"
-    >
-        DELETE
+    <button mat-raised-button color="primary" (click)="deleteUser()">
+      DELETE
     </button>
   </div>
 </div>

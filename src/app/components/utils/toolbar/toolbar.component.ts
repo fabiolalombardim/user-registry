@@ -6,6 +6,9 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/app.state.model';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
 
+// This component is based on scalability as well. It has all the components that can be used for filtering the table's data.
+// By using @ViewChild, values from the search bar and selects are gotten that then are send to the DashboardComponent, so that the list of users can be filtered.
+
 export interface Filters {
   cityFilter: string;
   companyFilter: string;
@@ -45,6 +48,8 @@ export class ToolbarComponent implements OnInit {
     })
   }
 
+  // This method is used to removed a badge. According to the index it receives, the variable "filters" gets
+  // cleared. If it received a zero, it clears filters.cityFilters, if it's a 1, filters.companyFilter.
   remove(index: number): void {
     switch (index) {
       case 0:
@@ -60,6 +65,8 @@ export class ToolbarComponent implements OnInit {
     }
   }
 
+  // This method is used to update the value of the filters. According to the index it receives, the variable "filters" gets
+  // updated with the new value. If it received a zero, it clears filters.cityFilters, if it's a 1, filters.companyFilter.
   updateFilterParams = (index: number, value: string): void => {
     switch (index) {
       case 0:
@@ -73,14 +80,18 @@ export class ToolbarComponent implements OnInit {
     }
   }
 
+  // Method that removes the selected option from the "clearCityFilter" dropdown
   clearCityFilter = (): void => {
     this.matRefCity.options.forEach((data: MatOption) => data.deselect());
   }
 
+  // Method that removes the selected option from the "clearCompanyFilter" dropdown
   clearCompanyFilter = (): void => {
     this.matRefCompany.options.forEach((data: MatOption) => data.deselect());
   }
 
+
+  // Method that sends all filters to the DashboardComponent by the use of an EventEmitter
   submitFilters = (): void => {
     this.filters.searchText = this.searchbar.search;
     this.sendFilters.emit(this.filters)

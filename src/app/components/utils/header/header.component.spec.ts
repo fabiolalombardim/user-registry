@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { DialogHandlerComponent } from '../dialog-handler/dialog-handler.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +10,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [HeaderComponent, DialogHandlerComponent],
+      imports: [MatDialogModule]
     });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;

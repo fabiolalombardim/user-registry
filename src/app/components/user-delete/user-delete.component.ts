@@ -6,6 +6,7 @@ import { AppState } from 'src/app/models/app.state.model';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UpdateUserAction } from 'src/app/store/actions/users.action';
 
+// Component used with the sole objective of the confirmation of the deletion of a user record
 @Component({
   selector: 'app-user-delete',
   templateUrl: './user-delete.component.html',
@@ -19,6 +20,9 @@ export class UserDeleteComponent implements OnInit {
     private store: Store<AppState>, public dialogRef: MatDialogRef<UserDeleteComponent>
   ) { }
 
+  // When the component loads, the list of users saved in the store it's retrieved to compare 
+  // the list of users with the one received in the constructor of this component in order to delete it
+  // from the list.
   ngOnInit(): void {
     this.store.select('dataState').forEach(values => {
       this.users = values.users
@@ -29,6 +33,8 @@ export class UserDeleteComponent implements OnInit {
     this.dialogRef.close()
   }
 
+  // Method used to removed an user from the list of users and save the updated list in the NgRx store.
+  // The user to be deleted it's found by it's index and then removed from the list of users saved in the store.
   deleteUser = () => {
     const id = this.data.user.id;
     const index = this.users.findIndex(obj => obj.id === id);

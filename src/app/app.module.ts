@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { DashboardService } from './services/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './services/config.service';
@@ -23,37 +22,54 @@ import { ToolbarComponent } from './components/utils/toolbar/toolbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './components/utils/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
-import { MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserDetailsComponent } from './components/user-dialog/user-details.component';
+import { DialogHandlerComponent } from './components/utils/dialog-handler/dialog-handler.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarService } from './services/snackbar.service';
+import { UserDeleteComponent } from './components/user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UserDetailComponent,
     SearchbarComponent,
     ToolbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserDetailsComponent,
+    DialogHandlerComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatGridListModule,
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     MatTableModule,
     MatSelectModule,
+    MatDividerModule,
     MatChipsModule,
+    MatCardModule,
     MatInputModule,
     FlexLayoutModule,
+    MatSnackBarModule,
     StoreModule.forRoot({
       dataState: reducer
     } as ActionReducerMap<any, any>),
     BrowserAnimationsModule
   ],
   providers: [DashboardService,
+    SnackbarService,
     {
       provide: APP_INITIALIZER,
       useFactory: loadConfig,

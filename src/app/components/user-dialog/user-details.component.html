@@ -1,0 +1,258 @@
+<div class="dialog" fxLayout="row" fxLayoutGap="2%" fxLayoutWrap>
+  <form fxFlex="100%" fxLayout="row" fxLayoutGap="2%" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-card class="dialog__card">
+        <mat-card-header
+          fxLayout="row"
+          class="dialog__presentation"
+          fxLayoutAlign="center center"
+        >
+          Personal information
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Name</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="name"
+                type="text"
+                matInput
+                required
+                placeholder="Name"
+                name="name"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Email</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="email"
+                type="email"
+                matInput
+                required
+                placeholder="Email"
+                name="email"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Phone</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="phone"
+                type="phone"
+                matInput
+                required
+                placeholder="Phone"
+                name="phone"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Website</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="website"
+                type="text"
+                matInput
+                required
+                placeholder="Website"
+                name="website"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div>
+      <mat-card class="dialog__card">
+        <mat-card-header
+          fxLayout="row"
+          class="dialog__presentation"
+          fxLayoutAlign="center center"
+        >
+          Billing address
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content formGroupName="address">
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Street</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="street"
+                type="text"
+                required
+                matInput
+                placeholder="Street"
+                name="street"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Suite</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="suite"
+                type="text"
+                matInput
+                required
+                placeholder="Suite"
+                name="suite"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Zip code</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="zipcode"
+                type="text"
+                min="0"
+                matInput
+                required
+                placeholder="Enter zip code"
+                name="zipcode"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">City</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                formControlName="city"
+                type="text"
+                required
+                matInput
+                placeholder="City"
+                name="city"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="25%">
+      <mat-card class="dialog__card">
+        <mat-card-header
+          fxLayout="row"
+          class="dialog__presentation"
+          fxLayoutAlign="center center"
+        >
+          Company location
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content formGroupName="company">
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">Name</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                type="text"
+                matInput
+                required
+                placeholder="Company name"
+                formControlName="name"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+            <mat-label class="dialog__title dialog__label">BS</mat-label>
+            <mat-form-field class="example-full-width">
+              <input
+                type="text"
+                matInput
+                placeholder="BS"
+                name="bs"
+                required
+                formControlName="bs"
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutGap="2%"
+            fxLayoutAlign="flex-star center"
+            class="dialog__box"
+          >
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </form>
+
+  <div fxLayout="row" fxLayoutAlign="flex-end flex-end" fxLayoutGap="8%" >
+    <button mat-raised-button color="primary" *ngIf="!data.isNew && editEnabled" [disabled]="!profileForm.touched" (click)="onSubmit()">
+        <span>SAVE</span>
+      </button>
+
+    <button class="dialog__edit-button" mat-stroked-button color="primary" (click)="enableEdit()" *ngIf="!data.isNew">
+      <span *ngIf="!editEnabled">EDIT</span>
+      <span *ngIf="editEnabled">CANCEL</span>
+    </button>
+
+    <button class="dialog__edit-button" (click)="onSubmit()" [disabled]="shouldDisable()"  mat-raised-button color="primary" *ngIf="data.isNew">
+        <span>SUBMIT USER</span>
+      </button>
+  </div>
+</div>

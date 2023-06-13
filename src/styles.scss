@@ -30,10 +30,22 @@ html,
 body {
   height: 100%;
 }
+
+tr, td, tbody, table {
+    font-family: 'Ubuntu-Regular';
+}
+
+th {
+    font-family: 'Ubuntu-Bold';
+}
 body {
   margin: 0;
   font-family: "Ubuntu-Regular";
   background-color: rgb(207 207 207 / 14%);
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    padding: 40px 40px;
 }

@@ -1,5 +1,5 @@
 export interface User {
-    id: number;
+    id: string;
     name: string;
     username: string;
     email: string;
@@ -14,7 +14,7 @@ interface Address {
     suite: string;
     city: string,
     zipcode: string;
-    geo: Geo
+    geo?: Geo
 }
 
 interface Geo {
@@ -25,6 +25,6 @@ interface Geo {
 
 interface Company {
     name: string;
-    catchPhrase: string;
+    catchPhrase?: string;
     bs: string;
   }

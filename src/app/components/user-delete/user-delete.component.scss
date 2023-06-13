@@ -1,0 +1,18 @@
+.delete {
+  &__icon {
+    transform: scale(2.5);
+    color: red;
+  }
+
+  &__question {
+    font-family: "Ubuntu-Bold";
+    font-size: 24px;
+    margin-top: 16px;
+  }
+
+  &__message {
+    font-family: "Ubuntu-Regular";
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+}

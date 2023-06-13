@@ -19,7 +19,7 @@ export class DashboardComponent {
 
   registry$: Observable<DataState> | undefined;
 
-  displayedColumns: string[] = ['id', 'name', 'username', 'email'];
+  displayedColumns: string[] = ['id', 'name', 'username', 'email', 'update', 'delete'];
   dataSource!: MatTableDataSource<any>
 
   dataSourceImmutable!: MatTableDataSource<any>

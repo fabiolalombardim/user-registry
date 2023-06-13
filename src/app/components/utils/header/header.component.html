@@ -3,6 +3,6 @@
     <span class="header__title">User registry</span>
   </div>
   <div fxFlex="20%" fxLayoutAlign="flex-end center">
-    <button mat-raised-button color="primary">CREATE NEW</button>
+    <app-dialog-handler [isNew]="true" [isDelete]="false"> </app-dialog-handler>
   </div>
 </div>
